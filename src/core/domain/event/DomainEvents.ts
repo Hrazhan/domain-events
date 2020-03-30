@@ -17,6 +17,7 @@ export class DomainEvents {
     if (!aggregateFound) {
       this.markedAggregates.push(aggregate);
     }
+    console.log('Marked Aggregate Dispatch List', this.markedAggregates);
   }
 
   /**
@@ -69,6 +70,11 @@ export class DomainEvents {
   ): void {
     const index = this.markedAggregates.findIndex((a) => a.equals(aggregate));
     this.markedAggregates.splice(index, 1);
+    console.log(
+      'removeAggeragetFromMarkedDispatchList:',
+      index,
+      this.markedAggregates,
+    );
   }
 
   // Register a handler to a domain event

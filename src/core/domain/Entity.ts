@@ -5,7 +5,7 @@ const isEntity = (v: any): v is Entity<any> => {
 };
 
 export abstract class Entity<T> {
-  protected _id: UniqueEntityID;
+  protected readonly _id: UniqueEntityID;
   public readonly props: T;
 
   constructor(props: T, id?: UniqueEntityID) {
@@ -18,7 +18,7 @@ export abstract class Entity<T> {
       return false;
     }
     if (this === object) {
-      return false;
+      return true;
     }
     if (!isEntity(object)) {
       return false;
@@ -26,3 +26,4 @@ export abstract class Entity<T> {
     return this._id.equals(object._id);
   }
 }
+

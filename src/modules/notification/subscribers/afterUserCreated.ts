@@ -5,7 +5,6 @@ import { UserCreated } from '../../users/domain/events/UserCreated';
 export class AfterUserCreated implements IHandle<UserCreated> {
   constructor() {
     this.setupSubscription();
-    console.info('AfterUserCreated: Constructor');
   }
 
   setupSubscription(): void {
@@ -14,7 +13,6 @@ export class AfterUserCreated implements IHandle<UserCreated> {
 
   private async onUserCreatedEvent(event: UserCreated): Promise<void> {
     const { user } = event;
-
-    console.log('AfterUserCreated: onUserCreatedEvent');
+    console.log('AfterUserCreated: onUserCreatedEvent', user.userName);
   }
 }

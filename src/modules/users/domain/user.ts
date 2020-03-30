@@ -31,14 +31,15 @@ export class User extends AggregateRoot<UserProps> {
     super(props, id);
   }
 
-  public static create(props: UserProps, id?: UniqueEntityID) {
+  public static create(props: UserProps, id?: UniqueEntityID): User {
     const guardResult = Guard.againstNullOrUndefinedBulk([
       { argument: props.username, argumentName: 'username' },
       { argument: props.password, argumentName: 'password' },
     ]);
 
     if (!guardResult.succeeded) {
-      return guardResult.message;
+      console.log(guardResult.message);
+      // return;
     }
 
     const isNewUser = !!id === false;
@@ -48,7 +49,6 @@ export class User extends AggregateRoot<UserProps> {
       },
       id,
     );
-    // console.log(user);
     if (isNewUser) {
       user.addDomainEvent(new UserCreated(user));
     }
