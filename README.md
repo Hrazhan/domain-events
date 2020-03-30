@@ -7,9 +7,6 @@
 - Entity
 - Value Object
 - Aggregate
-- Domain Service
-- Repository
-- Factory
 - Domain Events
 
 ### Scripts

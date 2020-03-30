@@ -2,20 +2,18 @@ import { AggregateRoot } from '../../../core/domain/AggregateRoot';
 import { UniqueEntityID } from '../../../core/domain/UniqueEntityID';
 import { Guard } from '../../../core/logic/Guard';
 import { UserCreated } from './events/UserCreated';
+import { UserName } from './userName';
 
 console.log('User Domain');
 
 interface UserProps {
+  // username: UserName;
   username: string;
   password: string;
 }
 
 export class User extends AggregateRoot<UserProps> {
   get id(): UniqueEntityID {
-    return this._id;
-  }
-
-  get userId(): any {
     return this._id;
   }
 
